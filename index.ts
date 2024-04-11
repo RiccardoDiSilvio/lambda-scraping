@@ -60,3 +60,15 @@ export const handler: Handler = async (
     return e;
   }
 };
+
+
+// Test - npx ts-node index.ts
+(async () => {
+    try {
+      const event: ExampleEvent = {};
+      //@ts-ignore
+      await handler(event, {}, () => {});
+    } catch (e) {
+      console.log("Error in Lambda Handler:", e);
+    }
+  })();
