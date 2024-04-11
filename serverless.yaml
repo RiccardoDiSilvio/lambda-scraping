@@ -4,7 +4,7 @@ provider:
   environment:
     ENV: ${self:provider.stage}
   name: aws
-  region: us-west-2
+  region: us-east-2
   runtime: nodejs20.x
   stage: ${opt:stage, "dev"}
 
@@ -13,6 +13,6 @@ functions:
     memorySize: 512
     timeout: 300
     image:
-      uri: 637423352927.dkr.ecr.us-west-2.amazonaws.com/scraper:latest
+      uri: 637423352927.dkr.ecr.us-east-2.amazonaws.com/scraper:latest
       command:
         - dist/index.handler
