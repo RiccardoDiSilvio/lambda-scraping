@@ -1,0 +1,22 @@
+{
+  "name": "lambda-scraping",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "deploy:dev": "serverless deploy --stage dev --verbose"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "aws-lambda": "^1.0.7",
+    "puppeteer": "^21.6.1",
+    "puppeteer-extra": "^3.3.6",
+    "puppeteer-extra-plugin-proxy": "^1.0.2",
+    "puppeteer-extra-plugin-stealth": "^2.11.2"
+  },
+  "devDependencies": {
+    "@types/aws-lambda": "^8.10.130",
+    "ts-node": "^10.9.2"
+  },
+  "description": ""
+}
