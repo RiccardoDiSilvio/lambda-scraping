@@ -84,4 +84,4 @@ RUN ls -la
 
 # Set runtime interface client as default command for the container runtime
 ENTRYPOINT ["/usr/local/bin/npx", "aws-lambda-ric"]
-CMD ["index.handler"]
+CMD ["dist/index.handler"]
