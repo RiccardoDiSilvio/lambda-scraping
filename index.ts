@@ -3,7 +3,11 @@ import { Browser, Page, PuppeteerLaunchOptions } from "puppeteer";
 import { PuppeteerExtra } from "puppeteer-extra";
 
 interface ExampleEvent {
-  //type your event here if desired
+    url: string;
+}
+
+interface ScrapingData {
+  content: string;
 }
 
 export const handler: Handler = async (
@@ -51,10 +55,11 @@ export const handler: Handler = async (
 
     const browser: Browser = await puppeteer.launch(launchOptions);
     const page: Page = await browser.newPage();
-    await page.goto("https://www.example.com");
+    await page.goto(event.url);
     await new Promise((resolve) => setTimeout(resolve, 5000));
-    console.log(await page.content());
+    const data = await page.content();
     await browser.close();
+    return data;
   } catch (e) {
     console.log("Error in Lambda Handler:", e);
     return e;
@@ -65,9 +70,9 @@ export const handler: Handler = async (
 // Test - npx ts-node index.ts
 (async () => {
     try {
-      const event: ExampleEvent = {};
+      const event: ExampleEvent = {'url': 'https://hubspot.com'};
       //@ts-ignore
-      await handler(event, {}, () => {});
+      console.log(await handler(event, {}, () => {}));
     } catch (e) {
       console.log("Error in Lambda Handler:", e);
     }
